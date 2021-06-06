@@ -86,9 +86,7 @@ class Menu {
                 break;
 
             case 4:
-                System.out.println("Wilt u uw wegenbelasting berekenen? ja/nee");
-                keuze = scanner.next();
-                if (keuze.equals("ja")) {
+
                     System.out.println("Wat is uw naam?");
                     naam= scanner.next();
                     Gebruiker gebruiker = GebruikerLijst.getGebruiker(naam);
@@ -103,7 +101,7 @@ class Menu {
                         brandstof =true;
                     }
                     System.out.println(gebruiker.WegenbelastingKosten(bouwjaar, gewicht, brandstof));
-                }
+
                 break;
             case 5:
                 System.out.println("Wat is uw naam: ");
@@ -130,12 +128,12 @@ class Menu {
             case 7:
                 System.out.println("Geef uw Naam: ");
                 naam = scanner.next();
-                Gebruiker gebruiker = GebruikerLijst.getGebruiker(naam);
-                if (gebruiker.checkEmptyBezit()) {
-                    System.out.println(gebruiker.PrintBezittingen());
+                Gebruiker gebruiker2 = GebruikerLijst.getGebruiker(naam);
+                if (gebruiker2.checkEmptyBezit()) {
+                    System.out.println(gebruiker2.PrintBezittingen());
                     System.out.println("Geef het model van de auto waarmee u wilt rijden: ");
                     String modelCar = scanner.next();
-                    Car auto = gebruiker.getCarGebruiker(modelCar);
+                    Car auto = gebruiker2.getCarGebruiker(modelCar);
                     auto.rij();
                 }else {
                     System.out.println("Uw bezit geen auto's");

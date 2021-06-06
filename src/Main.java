@@ -12,7 +12,7 @@ public class Main {
         Gebruiker Peter= new Gebruiker("Peter",48);
         new BankAccount(50000,106,Peter);
 
-        System.out.println(Peter.checkconnectie(b));
+
 
         int verder = 1;
         Menu m =new Menu();
