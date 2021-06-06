@@ -5,7 +5,7 @@ public abstract class Car {
     private Engine engine;
     private Chassis chassis;
     private Velgen velgen;
-    private boolean AutoAanofUit;
+    private boolean AutoAanofUit =false;
 
 
 
@@ -42,15 +42,10 @@ public abstract class Car {
         AutoAanofUit= true;
     }
 
-    public String getDealer(){
-        return Dealer;
-    }
     public void rij(){
         startCar();
-        if (AutoAanofUit) {
-            stopCar();
-        }
+        stopCar();
     }
-    public abstract void startCar();
-    public abstract void stopCar();
+    public abstract boolean startCar();
+    public abstract boolean stopCar();
 }

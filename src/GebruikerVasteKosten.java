@@ -1,6 +1,10 @@
 public class GebruikerVasteKosten {
     Gebruiker gebruiker;
 
+    public GebruikerVasteKosten(Gebruiker gebruiker){
+        this.gebruiker=gebruiker;
+    }
+
     public double VerzekeringKostenFormule(Car a) {
         if ( gebruiker.getLeeftijd() > 65) {
             return a.getPrijs() * 0.15;
@@ -13,7 +17,7 @@ public class GebruikerVasteKosten {
 
     }
 
-    public double WegenBelastingCalculator(Integer bouwjaar, Integer gewicht, boolean elektrisch) {
+    public double WegenBelastingFormule(Integer bouwjaar, Integer gewicht, boolean elektrisch) {
         double wegenB;
         if (bouwjaar > 2010) {
             wegenB = 750;

@@ -7,9 +7,9 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Gebruiker Tim  =new Gebruiker("Tim","jojo",19);
+        Gebruiker Tim  =new Gebruiker("Tim",19);
         BankAccount b= new BankAccount(50000,105,Tim);
-        Gebruiker Peter= new Gebruiker("Peter","jaja",48);
+        Gebruiker Peter= new Gebruiker("Peter",48);
         new BankAccount(50000,106,Peter);
 
         System.out.println(Peter.checkconnectie(b));

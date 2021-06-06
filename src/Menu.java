@@ -8,14 +8,14 @@ class Menu {
         System.out.println("2) Auto kopen");
         System.out.println("3) Auto verkopen");
         System.out.println("4) wegenbelasting berekenen");
-        System.out.println("5) Uw bezit aan autos");
-        System.out.println("6) Auto rijden");
+        System.out.println("5) Verzekeringskosten berkenen");
+        System.out.println("6) Uw bezit aan autos");
+        System.out.println("7) Auto rijden");
         System.out.println("0) Exit");
 
         int choice = scanner.nextInt();
         return choice;
     }
-
 
     public void printMenu() {
         Scanner scanner = new Scanner(System.in);
@@ -31,7 +31,7 @@ class Menu {
                 System.out.println("Saldo en Accountgegevens");
                 System.out.print("Geef uw Accountnummer: ");
                 accountnummer = scanner.nextInt();
-                BankAccount search = BankAccount.getAccount(accountnummer);
+                BankAccount search = BankAccountLijst.getAccount(accountnummer);
                 System.out.println("Uw Naam: " + search.getNaamBalance());
                 System.out.println("Uw accountnummer: " + search.getAccountNR());
                 System.out.println("Uw balance:" + search.getBalance());
@@ -70,19 +70,19 @@ class Menu {
 
             case 3:
                 System.out.println("Verkoop Auto");
-                    System.out.println("Geef uw Naam: ");
-                    naam = scanner.next();
-                    Gebruiker Verkoper = GebruikerLijst.getGebruiker(naam);
-                    System.out.println("Uw bezit aan auto's: ");
-                    System.out.println();
-                    System.out.println(Verkoper.PrintBezittingen());
-                    System.out.println("------------------------------------------------");
-                    System.out.println("Welke auto wilt uw verkopen? Geef het ModelNaam:");
-                    String ModelNaam = scanner.next();
-                    Car c = Verkoper.getCarGebruiker(ModelNaam);
-                    System.out.println("Geef uw BankAccountNummer:");
-                    accountnummer = scanner.nextInt();
-                    Verkoper.VerKoopAuto(c,accountnummer);
+                System.out.println("Geef uw Naam: ");
+                naam = scanner.next();
+                Gebruiker Verkoper = GebruikerLijst.getGebruiker(naam);
+                System.out.println("Uw bezit aan auto's: ");
+                System.out.println();
+                System.out.println(Verkoper.PrintBezittingen());
+                System.out.println("------------------------------------------------");
+                System.out.println("Welke auto wilt uw verkopen? Geef het ModelNaam:");
+                String ModelNaam = scanner.next();
+                Car c = Verkoper.getCarGebruiker(ModelNaam);
+                System.out.println("Geef uw BankAccountNummer:");
+                accountnummer = scanner.nextInt();
+                Verkoper.VerKoopAuto(c,accountnummer);
                 break;
 
             case 4:
@@ -105,23 +105,41 @@ class Menu {
                     System.out.println(gebruiker.WegenbelastingKosten(bouwjaar, gewicht, brandstof));
                 }
                 break;
-
             case 5:
+                System.out.println("Wat is uw naam: ");
+                naam=scanner.next();
+                Gebruiker g = GebruikerLijst.getGebruiker(naam);
+                if (g.checkEmptyBezit()) {
+                    System.out.println(g.PrintBezittingen());
+                    System.out.println("Van welke auto wilt u de verzekeringskosten berekenen? geef het modelnaam: ");
+                    String model = scanner.next();
+                    Car b = g.getCarGebruiker(model);
+
+                    System.out.println(g.VerzekeringsKosten(b));
+                }else {
+                    System.out.println("u bezit geen auto's");
+                }
+                break;
+            case 6:
                 System.out.println("Wat is uw naam:");
                 String uwnaam = scanner.next();
                 Gebruiker zoek = GebruikerLijst.getGebruiker(uwnaam);
                 System.out.println(zoek.PrintBezittingen());
                 break;
 
-            case 6:
+            case 7:
                 System.out.println("Geef uw Naam: ");
                 naam = scanner.next();
                 Gebruiker gebruiker = GebruikerLijst.getGebruiker(naam);
-                System.out.println(gebruiker.PrintBezittingen());
-                System.out.println("Geef het model van de auto waarmee u wilt rijden: ");
-                String model = scanner.next();
-                Car auto = gebruiker.getCarGebruiker(model);
-                auto.rij();
+                if (gebruiker.checkEmptyBezit()) {
+                    System.out.println(gebruiker.PrintBezittingen());
+                    System.out.println("Geef het model van de auto waarmee u wilt rijden: ");
+                    String modelCar = scanner.next();
+                    Car auto = gebruiker.getCarGebruiker(modelCar);
+                    auto.rij();
+                }else {
+                    System.out.println("Uw bezit geen auto's");
+                }
                 break;
         }
 

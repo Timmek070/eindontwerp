@@ -8,7 +8,7 @@ public class GebruikerHandelingen {
     }
 
     public boolean koopAuto(Car c, int accountnummer) {
-        BankAccount search = BankAccount.getAccount(accountnummer);
+        BankAccount search = BankAccountLijst.getAccount(accountnummer);
         if (gebruiker.checkconnectie(search)) {
             if (search.getBalance() >= c.getPrijs()) {
                 double newBalance = search.getBalance() - c.getPrijs();
@@ -31,9 +31,9 @@ public class GebruikerHandelingen {
     }
 
     public boolean verkoopAuto(Car c,int accountnr) {
-        BankAccount search = BankAccount.getAccount(accountnr);
+        BankAccount search = BankAccountLijst.getAccount(accountnr);
         if (gebruiker.checkconnectie(search)) {
-            if (bezittingen.zoekbezit(c)) {
+            if (bezittingen.zoekBezit(c)) {
                 search.setBalance(search.getBalance() + c.getPrijs() * 0.85);
                 bezittingen.removeCar(c);
                 System.out.println("De auto is succesvol verkocht");

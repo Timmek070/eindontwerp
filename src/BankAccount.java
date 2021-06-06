@@ -4,14 +4,17 @@ public class BankAccount {
     private double balance;
     private Gebruiker gebruiker;
     private int accountNR;
-    private static ArrayList<BankAccount> accountlijst = new ArrayList<>();
+    private BankAccountLijst lijst;
+
 
 
     public BankAccount(double balance, int AccountNR, Gebruiker gebruiker) {
+
         this.balance = balance;
         this.gebruiker = gebruiker;
         this.accountNR = AccountNR;
-        accountlijst.add(this);
+        this.lijst=new BankAccountLijst(this);
+
     }
 
 
@@ -27,14 +30,7 @@ public class BankAccount {
         return gebruiker.getNaam();
     }
 
-    public static BankAccount getAccount(int AccountNummer) {
-        for (BankAccount t : accountlijst) {
-            if (t.getAccountNR() == AccountNummer) {
-                return t;
-            }
-        }
-        return null;
-    }
+
     public Gebruiker getGebruikerAccount(){
         return gebruiker;
     }

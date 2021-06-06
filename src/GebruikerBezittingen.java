@@ -16,7 +16,7 @@ public class GebruikerBezittingen {
     public String printBezit() {
         String autos = "";
         for (Car d : bezit) {
-            autos +=  d.getMerk() +" "+d.getModel() + "," ;
+            autos +=  d.getMerk() +" "+d.getModel() + " " ;
         }
         return autos;
     }
@@ -29,7 +29,7 @@ public class GebruikerBezittingen {
         bezit.remove(c);
     }
 
-    public boolean zoekbezit(Car c) {
+    public boolean zoekBezit(Car c) {
         for (Car d : bezit) {
             if (d.equals(c)) {
                 return true;
@@ -42,3 +42,4 @@ public class GebruikerBezittingen {
         return bezit.size();
     }
 }
+
