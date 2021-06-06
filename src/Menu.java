@@ -17,7 +17,7 @@ class Menu {
         return choice;
     }
 
-    public void printMenu() {
+    public static void printMenu() {
         Scanner scanner = new Scanner(System.in);
         String naam="";
         Integer accountnummer;
@@ -70,6 +70,7 @@ class Menu {
 
             case 3:
                 System.out.println("Verkoop Auto");
+
                 System.out.println("Geef uw Naam: ");
                 naam = scanner.next();
                 Gebruiker Verkoper = GebruikerLijst.getGebruiker(naam);

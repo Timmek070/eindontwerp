@@ -15,9 +15,9 @@ public class Main {
 
 
         int verder = 1;
-        Menu m =new Menu();
+
         while (verder !=0){
-            m.printMenu();
+            Menu.printMenu();
             System.out.println("Wilt u doorgaan");
             System.out.println("0) nee");
             System.out.println("1) ja");
